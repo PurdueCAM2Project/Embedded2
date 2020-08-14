@@ -9,14 +9,14 @@ from typing import List, Set, Dict, Tuple, Optional
 
 class Encryption():
 
-    def __init__(self):
+    def __init__(self, passwd):
         '''
         This class handles encryption to prevent identifiable information (facial data)
         from leaving the camera. It also generates a random key that will be used by
         authorized personnel to acces the data.
         '''
-        self.salt = os.urandom(16) #Salt variable (Generates a random byte string)
-        self.key = PBKDF2("passphrase", self.salt).read(16) #Creates key using KDF scheme
+        self.salt = "Embedded2"
+        self.key = PBKDF2(passwd, self.salt).read(16) #Creates key using KDF scheme
 
     def encrypt(self,
                 coordinates: List[Tuple[int]],

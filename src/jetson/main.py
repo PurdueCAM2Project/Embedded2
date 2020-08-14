@@ -3,6 +3,7 @@ import time
 import datetime
 import warnings
 import json
+import getpass
 from multiprocessing import Process, Queue, Value
 
 import cv2
@@ -122,7 +123,10 @@ if __name__ == "__main__":
     detector = FaceDetector(detector=detector, detector_type=detector_type,
                             cuda=cuda and torch.cuda.is_available(), set_default_dev=True)
     classifier = Classifier(classifier_model, cuda)
-    encryptor = Encryptor()
+
+    passwd = getpass.getpass("Enter password to use for image encryption:")
+    encryptor = Encryptor(passwd)
+    del passwd
 
     run_face_detection: bool = True
     while run_face_detection: # main video detection loop that will iterate until ESC key is entered

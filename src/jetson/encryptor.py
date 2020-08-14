@@ -3,11 +3,11 @@ import numpy as np
 from typing import List, Tuple
 
 class Encryptor(object):
-    def __init__(self):
+    def __init__(self, passwd):
         """
         This class acts as a wrapper for the AES encryptor in AES.py and stores the encryption key for decrypting
         """
-        self.encryptor = AESEncryptor()
+        self.encryptor = AESEncryptor(passwd)
         self.key = self.encryptor.key
 
     def encryptFace(self, coordinates: List[Tuple[int]],
