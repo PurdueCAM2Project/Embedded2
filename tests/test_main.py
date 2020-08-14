@@ -15,7 +15,7 @@ class TestMain():
         self.img = np.zeros((300,300,3),np.uint8)
         self.img[:] = (0, 0, 255)
         self.output_dir = "test_output"
-        self.encryptor = Encryptor()
+        self.encryptor = Encryptor("frog")
         self.boxes = [(10, 10, 20, 20)]
         
     def test_writeImg(self):
